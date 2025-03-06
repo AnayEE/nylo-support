@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:nylo_support/router/router.dart';
 import '/event_bus/event_bus_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:app_badge_plus/app_badge_plus.dart';
 import '/events/events.dart';
 import '/helpers/backpack.dart';
@@ -25,25 +24,7 @@ import 'ny_logger.dart';
 /// Returns a String|bool|null|dynamic
 /// depending on the value type.
 dynamic getEnv(String key, {dynamic defaultValue}) {
-  if (!dotenv.env.containsKey(key) && defaultValue != null) {
-    return defaultValue;
-  }
-
-  String? value = dotenv.env[key];
-
-  if (value == 'null' || value == null) {
-    return null;
-  }
-
-  if (value.toLowerCase() == 'true') {
-    return true;
-  }
-
-  if (value.toLowerCase() == 'false') {
-    return false;
-  }
-
-  return value.toString();
+  return defaultValue;
 }
 
 /// Returns the full image path for a image in /public/images/ directory.

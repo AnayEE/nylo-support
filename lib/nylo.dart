@@ -12,7 +12,6 @@ import '/widgets/ny_form.dart';
 import '/controllers/ny_controller.dart';
 import '/event_bus/event_bus_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '/alerts/toast_enums.dart';
 import '/alerts/toast_meta.dart';
 import '/events/events.dart';
@@ -494,17 +493,9 @@ class Nylo {
   static Future<Nylo> init(
       {Function? setup,
       Function(Nylo nylo)? setupFinished,
-      bool? showSplashScreen}) async {
-    const String envFile = String.fromEnvironment(
-      'ENV_FILE',
-      defaultValue: '.env',
-    );
-    await dotenv.load(
-        fileName: envFile,
-        mergeWith: showSplashScreen != null
-            ? {"SHOW_SPLASH_SCREEN": 'true'}
-            : const {});
-    Intl.defaultLocale = getEnv('DEFAULT_LOCALE', defaultValue: 'en');
+      bool showSplashScreen = true,
+      String defaultLocale = 'en'}) async {
+    Intl.defaultLocale = defaultLocale;
 
     await _configureLocalTimeZone();
 
