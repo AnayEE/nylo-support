@@ -71,8 +71,14 @@ class Nylo {
   NyCache? _cache;
   bool isFlutterLocalNotificationsInitialized = false;
 
+  bool? get enableErrorStack => _enableErrorStack;
+  bool? get useLocalNotificationsProperty => _useLocalNotifications;
+
   /// Get the cache instance
   NyCache? get getCache => _cache;
+  set cache(NyCache cache) {
+    _cache = cache;
+  }
 
   /// Create a new Nylo instance.
   Nylo({this.router, bool useNyRouteObserver = true})
