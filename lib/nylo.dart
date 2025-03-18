@@ -42,9 +42,16 @@ class Nylo {
   bool? _showDateTimeInLogs;
   bool? _enableErrorStack;
   ErrorStackLogLevel? _errorStackLogLevel;
+
+  ErrorStackLogLevel? get errorStackLogLevel => _errorStackLogLevel;
+
   String? authStorageKey;
   Widget Function(FlutterErrorDetails errorDetails)? _errorStackErrorWidget;
+
+  Widget Function(FlutterErrorDetails errorDetails)? get errorStackErrorWidget => _errorStackErrorWidget;
   InitializationSettings? _initializationSettings;
+
+  InitializationSettings? get initializationSettings => _initializationSettings;
   final Map<Type, NyEvent> _events = {};
   final Map<String, dynamic> _validationRules = {};
   final Map<String, dynamic> _formCasts = {};
